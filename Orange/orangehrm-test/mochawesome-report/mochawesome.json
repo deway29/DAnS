@@ -1,0 +1,219 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-02-23T09:47:42.848Z",
+    "end": "2026-02-23T09:48:33.672Z",
+    "duration": 50824,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "42cb71bc-1b9e-49e7-af45-d7ac25ebaa43",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "79dbaa5a-8359-40f4-9565-1d9b5548d232",
+          "title": "OrangeHRM Candidate Test",
+          "fullFile": "C:\\Users\\dedew\\Orange\\orangehrm-test\\tests\\candidate.test.js",
+          "file": "\\tests\\candidate.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"OrangeHRM Candidate Test\"",
+              "fullTitle": "OrangeHRM Candidate Test \"before all\" hook in \"OrangeHRM Candidate Test\"",
+              "timedOut": false,
+              "duration": 21985,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser(\"firefox\").build();\n\n// Login dulu\nawait driver.get(\"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login\");\nawait driver.wait(until.elementLocated(By.xpath(\"//img[@alt='company-branding']\")), 10000);\nawait driver.findElement(By.xpath(\"//input[@placeholder='Username']\")).sendKeys(\"Admin\");\nawait driver.findElement(By.xpath(\"//input[@placeholder='Password']\")).sendKeys(\"admin123\");\nawait driver.findElement(By.xpath(\"//button[@type='submit']\")).click();\nawait driver.wait(until.elementLocated(By.xpath(\"//h6[normalize-space()='Dashboard']\")), 10000);",
+              "err": {},
+              "uuid": "e5d4a6f5-a045-4c25-b43e-71134afcc478",
+              "parentUUID": "79dbaa5a-8359-40f4-9565-1d9b5548d232",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"OrangeHRM Candidate Test\"",
+              "fullTitle": "OrangeHRM Candidate Test \"after all\" hook in \"OrangeHRM Candidate Test\"",
+              "timedOut": false,
+              "duration": 822,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "d9363d84-01f3-45fd-ab46-22a86148f803",
+              "parentUUID": "79dbaa5a-8359-40f4-9565-1d9b5548d232",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should add new candidate successfully",
+              "fullTitle": "OrangeHRM Candidate Test should add new candidate successfully",
+              "timedOut": false,
+              "duration": 5828,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Masuk ke menu Recruitment\nawait driver.findElement(By.xpath(\"//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name'][normalize-space()='Recruitment']\")).click();\nawait driver.sleep(1000);\n// Click Add\nawait driver.findElement(By.xpath(\"//button[normalize-space()='Add']\")).click();\nawait driver.sleep(1000);\n// Isi form\nawait driver.wait(until.elementLocated(By.xpath(\"//h6[normalize-space()='Add Candidate']\")), 10000);\nawait driver.findElement(By.xpath(\"//input[@placeholder='First Name']\")).sendKeys(\"John\");\nawait driver.findElement(By.xpath(\"//input[@placeholder='Last Name']\")).sendKeys(\"Doe\");\nawait driver.findElement(By.xpath(\"(//input[@placeholder='Type here'])[1]\")).sendKeys(\"johndoe@example.com\");\n// Submit\nawait driver.findElement(By.xpath(\"//button[@type='submit']\")).click();\n// Tunggu notifikasi / table update\nawait driver.sleep(2000);\n// Assertion: cek nama muncul di list\nlet candidateName = await driver.wait(until.elementLocated(By.xpath(\"//a[normalize-space()='Candidates']\")), 10000);\nassert.strictEqual(candidateName, \"John Doe\");\nawait driver.sleep(2000);\n// Screenshot bukti\nlet image = await driver.takeScreenshot();\nfs.writeFileSync(\"screenshots/candidate.png\", image, \"base64\");",
+              "err": {
+                "message": "NoSuchElementError: Unable to locate element: //button[normalize-space()='Add']",
+                "estack": "NoSuchElementError: Unable to locate element: //button[normalize-space()='Add']\n    at Object.throwDecodedError (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\http.js:526:13)\n    at Executor.execute (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\http.js:458:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Driver.execute (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async toWireValue (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:149:15)\n    at async C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:195:16\n    at async forEachKey (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:189:9)\n    at async convertKeys (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:194:3)\n    at async Driver.execute (C:\\Users\\dedew\\Orange\\node_modules\\selenium-webdriver\\lib\\webdriver.js:743:22)\n    at async Context.<anonymous> (tests\\candidate.test.js:34:9)",
+                "diff": null
+              },
+              "uuid": "d5fad6e6-ceb3-4852-a769-e9732eebd956",
+              "parentUUID": "79dbaa5a-8359-40f4-9565-1d9b5548d232",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "d5fad6e6-ceb3-4852-a769-e9732eebd956"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 5828,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 40000
+        },
+        {
+          "uuid": "dd94923c-5f95-454d-89bb-5ac85bf906ec",
+          "title": "OrangeHRM Login Test",
+          "fullFile": "C:\\Users\\dedew\\Orange\\orangehrm-test\\tests\\login.test.js",
+          "file": "\\tests\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"OrangeHRM Login Test\"",
+              "fullTitle": "OrangeHRM Login Test \"before all\" hook in \"OrangeHRM Login Test\"",
+              "timedOut": false,
+              "duration": 3023,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser(\"firefox\").build();",
+              "err": {},
+              "uuid": "e3a5774b-53d6-42ea-b811-8a30b836036a",
+              "parentUUID": "dd94923c-5f95-454d-89bb-5ac85bf906ec",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"OrangeHRM Login Test\"",
+              "fullTitle": "OrangeHRM Login Test \"after all\" hook in \"OrangeHRM Login Test\"",
+              "timedOut": false,
+              "duration": 1070,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "dbae2eaf-46dd-4b71-8eea-246d1a85f744",
+              "parentUUID": "dd94923c-5f95-454d-89bb-5ac85bf906ec",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully",
+              "fullTitle": "OrangeHRM Login Test should login successfully",
+              "timedOut": false,
+              "duration": 18088,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login\");\n// Tunggu sampai dashboard muncul\nawait driver.wait(until.elementLocated(By.xpath(\"//img[@alt='company-branding']\")), 10000);\n// Input username & password\nawait driver.findElement(By.xpath(\"//input[@placeholder='Username']\")).sendKeys(\"Admin\");\nawait driver.findElement(By.xpath(\"//input[@placeholder='Password']\")).sendKeys(\"admin123\");\n// Click login\nawait driver.findElement(By.xpath(\"//button[@type='submit']\")).click();\n// Tunggu sampai dashboard muncul\nawait driver.wait(until.elementLocated(By.xpath(\"//h6[normalize-space()='Dashboard']\")), 10000);\n// Assertion: Dashboard muncul\nlet dashboard = await driver.findElement(By.xpath(\"//h6[normalize-space()='Dashboard']\")).getText();\nassert.strictEqual(dashboard, \"Dashboard\");\n// Screenshot bukti login\nlet image = await driver.takeScreenshot();\nfs.writeFileSync(\"screenshots/login.png\", image, \"base64\");",
+              "err": {},
+              "uuid": "17b4faa1-09a6-4364-a9c5-fa846e52d9c6",
+              "parentUUID": "dd94923c-5f95-454d-89bb-5ac85bf906ec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "17b4faa1-09a6-4364-a9c5-fa846e52d9c6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18088,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
